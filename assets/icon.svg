@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 120 124" role="img" aria-label="Agent Security icon">
+<title>Agent Security</title>
+<desc>A shield containing a small connected node network.</desc>
+<path d="M22,34 L98,34 L98,70 C98,95 81,110 60,118 C39,110 22,95 22,70 Z" fill="#4F46E5" stroke="#4338CA" stroke-width="1"/>
+<g stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" opacity="0.85">
+<line x1="60" y1="70" x2="60" y2="48"/>
+<line x1="60" y1="70" x2="42" y2="90"/>
+<line x1="60" y1="70" x2="78" y2="90"/>
+</g>
+<circle cx="60" cy="48" r="6" fill="#FFFFFF"/>
+<circle cx="42" cy="90" r="6" fill="#FFFFFF"/>
+<circle cx="78" cy="90" r="6" fill="#FFFFFF"/>
+<circle cx="60" cy="70" r="8.5" fill="#22D3EE" stroke="#FFFFFF" stroke-width="1.5"/>
+</svg>

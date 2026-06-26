@@ -184,7 +184,7 @@ Continuous Improve → 持续安全增强
 
 ### 方法 1: 克隆仓库
 ```bash
-git clone https://github.com/yourusername/agent-security-skill.git
+git clone https://github.com/arthurpanhku/agent-security-skill.git
 cd agent-security-skill
 ```
 

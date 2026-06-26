@@ -21,7 +21,8 @@ agent-security-skill/
 ├── 📄 LICENSE                            MIT 许可证
 ├── 📄 project.json                       项目元数据和配置
 ├── 📄 .gitignore                         Git 忽略规则
-└── 📦 agent-security-skill.skill         Skill 打包文件 (ZIP)
+├── 📦 agent-security-skill.skill         Skill 打包文件 (ZIP)
+└── 🎨 assets/                            品牌资源（logo.svg, icon.svg）
 ```
 
 ---
@@ -203,11 +204,12 @@ agent-security-skill/
 ## 📊 项目统计
 
 ### 文件统计
-- 总文件数: 13
-- 文档文件: 10 (.md)
+- 总文件数: 15
+- 文档文件: 9 (.md)
 - 配置文件: 2 (.json, .gitignore)
 - 许可文件: 1 (LICENSE)
 - 打包文件: 1 (.skill)
+- 资源文件: 2 (.svg)
 
 ### 内容统计
 - 总大小: ~40 KB (未压缩)
