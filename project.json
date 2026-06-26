@@ -1,0 +1,80 @@
+{
+  "name": "agent-security-skill",
+  "version": "1.0.0",
+  "description": "企业级 AI 代理安全框架和最佳实践库",
+  "author": "agent-security-skill Contributors",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/agent-security-skill"
+  },
+  "keywords": [
+    "ai-agents",
+    "security",
+    "zero-trust",
+    "agent-security",
+    "compliance",
+    "threat-intelligence"
+  ],
+  "categories": [
+    "Security",
+    "Enterprise",
+    "AI Agents",
+    "Compliance"
+  ],
+  "mainContent": "zero-trust-for-ai-agents.md",
+  "framework": "Zero Trust for AI Agents",
+  "tiers": [
+    {
+      "name": "Foundation",
+      "timeline": "2-4 weeks",
+      "target": "Organizations starting with agent deployments"
+    },
+    {
+      "name": "Advanced",
+      "timeline": "2-3 months",
+      "target": "Mature deployments with security investment"
+    },
+    {
+      "name": "Optimized",
+      "timeline": "3-6 months",
+      "target": "High-risk environments, regulated industries"
+    }
+  ],
+  "features": [
+    "Zero Trust Framework",
+    "Threat Intelligence",
+    "Compliance Guidance",
+    "Implementation Roadmap",
+    "Best Practices",
+    "Agentic SOAR"
+  ],
+  "complianceFrameworks": [
+    "HIPAA",
+    "PCI-DSS",
+    "SOX",
+    "FedRAMP",
+    "FISMA"
+  ],
+  "threats": [
+    "Prompt Injection",
+    "Tool Poisoning",
+    "Identity & Privilege Abuse",
+    "Memory Poisoning",
+    "Supply Chain Attacks"
+  ],
+  "relatedResources": [
+    {
+      "title": "Anthropic - Zero Trust for AI Agents",
+      "url": "https://claude.com/blog/zero-trust-for-ai-agents"
+    },
+    {
+      "title": "Claude Security",
+      "url": "https://www.anthropic.com/product/security"
+    },
+    {
+      "title": "NIST Cybersecurity Framework",
+      "url": "https://www.nist.gov/cyberframework"
+    }
+  ]
+}
