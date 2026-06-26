@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 520 144" role="img" aria-label="Agent Security logo">
+<title>Agent Security</title>
+<desc>A shield containing a small connected node network, beside the wordmark Agent Security and the tagline zero-trust security for AI agents.</desc>
+<style>
+.wm-1{fill:#0F172A}.wm-2{fill:#4F46E5}.tag{fill:#64748B}
+@media (prefers-color-scheme:dark){.wm-1{fill:#F1F5F9}.wm-2{fill:#818CF8}.tag{fill:#94A3B8}}
+</style>
+<path d="M32,42 L108,42 L108,76 C108,99 91,113 70,121 C49,113 32,99 32,76 Z" fill="#4F46E5" stroke="#4338CA" stroke-width="1"/>
+<g stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" opacity="0.85">
+<line x1="70" y1="74" x2="70" y2="53"/>
+<line x1="70" y1="74" x2="53" y2="93"/>
+<line x1="70" y1="74" x2="87" y2="93"/>
+</g>
+<circle cx="70" cy="53" r="5.5" fill="#FFFFFF"/>
+<circle cx="53" cy="93" r="5.5" fill="#FFFFFF"/>
+<circle cx="87" cy="93" r="5.5" fill="#FFFFFF"/>
+<circle cx="70" cy="74" r="8" fill="#22D3EE" stroke="#FFFFFF" stroke-width="1.5"/>
+<text x="132" y="82" font-family="'Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="44" font-weight="700" letter-spacing="-0.5"><tspan class="wm-1">Agent</tspan> <tspan class="wm-2">Security</tspan></text>
+<text x="134" y="108" font-family="'Inter','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif" font-size="14.5" font-weight="500" letter-spacing="3" class="tag">Zero-trust security for AI agents</text>
+</svg>

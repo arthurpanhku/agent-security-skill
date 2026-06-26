@@ -39,6 +39,17 @@
 
 ## [Unreleased]
 
+### Added
+- **references-and-frameworks.md**：厂商中立的外部框架交叉引用（OpenAI、Google SAIF、Microsoft、NIST、MITRE ATLAS、OWASP），含威胁→框架映射；所有链接于 2026-06-26 核验
+- 威胁景观新增 **MCP 与工具供应链威胁**（工具投毒、rug pull、confused deputy、令牌窃取）
+- 新增 **"提示词注入的架构性防御"** 章节：致命三要素、Dual-LLM、CaMeL、egress 控制、人在环
+- 项目 **Logo 与图标**（assets/logo.svg、assets/icon.svg）
+
+### Changed
+- 修正提示词注入的定性：从"可检测/可过滤"改为架构性防御为主、检测为辅（间接注入无可靠检测解）
+- Agentic SOAR 重新定位为前瞻性方向，并标注其自身风险（防御 Agent 亦可被注入、自动响应可能误杀）
+- **重写 README**：加入 Logo 与徽章、修正失效的「项目结构」列表与 `yourusername` 占位链接、对齐已更新内容与多方来源
+
 ### Planned
 - [ ] 添加供应链安全详细分析
 - [ ] 创建合规检查清单
