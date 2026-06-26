@@ -12,6 +12,7 @@ agent-security-skill/
 ├── 📄 README.md                          项目主文档和快速开始指南
 ├── 📄 SKILL.md                           Skill 功能说明和用法
 ├── 📄 zero-trust-for-ai-agents.md        Claude Zero Trust 框架核心内容
+├── 📄 references-and-frameworks.md       外部框架交叉引用（OpenAI/Google/NIST/MITRE/OWASP，已验证）
 ├── 📄 PROJECT_SUMMARY.md                 项目总结和概览
 ├── 📄 GITHUB_SETUP.md                    GitHub 项目创建指南
 ├── 📄 CONTRIBUTING.md                    贡献者指南
@@ -202,8 +203,8 @@ agent-security-skill/
 ## 📊 项目统计
 
 ### 文件统计
-- 总文件数: 12
-- 文档文件: 9 (.md)
+- 总文件数: 13
+- 文档文件: 10 (.md)
 - 配置文件: 2 (.json, .gitignore)
 - 许可文件: 1 (LICENSE)
 - 打包文件: 1 (.skill)
@@ -259,6 +260,7 @@ agent-security-skill/
 | 项目是什么? | README.md |
 | Skill 能做什么? | SKILL.md |
 | Zero Trust 框架详情 | zero-trust-for-ai-agents.md |
+| 外部框架 / 多方来源（OpenAI、Google、NIST 等） | references-and-frameworks.md |
 | 如何在 GitHub 上创建项目 | GITHUB_SETUP.md |
 | 如何贡献代码 | CONTRIBUTING.md |
 | 项目版本历史 | CHANGELOG.md |

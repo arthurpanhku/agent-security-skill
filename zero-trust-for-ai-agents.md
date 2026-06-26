@@ -74,6 +74,8 @@ Traditional security controls cannot prevent agents from misusing legitimate per
 
 **Impact**: Unauthorized tool execution, privilege escalation, data exfiltration
 
+> **Critical caveat**: Indirect prompt injection has **no reliable detection-based solution**. Input filtering and classifier-based "injection detection" catch only a fraction of attacks and must not be relied on as the primary control. Durable defense is **architectural** — limit what a compromised agent can do. See [Defending Against Prompt Injection](#defending-against-prompt-injection-architecture-over-detection) below. (Greshake et al., 2023; Willison, 2025)
+
 ### 2. Tool Poisoning
 **Definition**: Compromised external tools return malicious data or hidden instructions
 
@@ -108,6 +110,51 @@ Traditional security controls cannot prevent agents from misusing legitimate per
 - Third-party tool integrations
 - Infrastructure and deployment systems
 - Development pipelines
+
+### 6. MCP and Tool Supply-Chain Threats
+**Definition**: Risks introduced by the tools and servers an agent connects to — increasingly via the Model Context Protocol (MCP) — where the tool surface itself is attacker-controllable
+
+**Vectors**:
+- **Tool poisoning**: malicious instructions hidden in a tool's name, description, or schema, which the model ingests as trusted context
+- **Rug pulls**: a tool behaves benignly at approval time, then silently changes behavior later
+- **Confused deputy**: the agent is induced to use its legitimate privileges on an attacker's behalf
+- **Token / credential theft**: over-scoped or long-lived OAuth tokens held by MCP servers
+- **Cross-server shadowing**: one malicious server alters how the agent uses another
+
+**Mitigations**: vet and pin MCP servers; treat tool descriptions as untrusted input; least-privilege, short-lived scoped tokens; require human approval for new or changed tools; log every tool invocation. See OWASP *Agentic AI – Threats and Mitigations* and Microsoft's *Taxonomy of Failure Modes in Agentic AI Systems*.
+
+---
+
+## Defending Against Prompt Injection: Architecture over Detection
+
+Prompt injection — especially **indirect** injection, where malicious instructions arrive inside data the agent reads (web pages, documents, tool outputs, other agents' messages) — is currently an **unsolved problem at the model layer**. No system prompt, classifier, or input filter reliably stops it. Treat detection as defense-in-depth, never as the primary control.
+
+The robust strategy is to **limit what a compromised agent can do**, not to assume you can keep it from being compromised.
+
+### The Lethal Trifecta (Willison, 2025)
+
+An agent becomes dangerous to its user when it simultaneously has all three of:
+
+1. **Access to private/sensitive data**
+2. **Exposure to untrusted content** (anything an attacker can influence)
+3. **A channel to communicate externally** (exfiltration: outbound requests, fetched URLs, rendered images, email/messages)
+
+Data theft requires all three legs. **Removing any one leg breaks the exfiltration path** — the single most useful design heuristic for agent security.
+
+### Architectural Patterns
+
+| Pattern | Idea | Reference |
+|---------|------|-----------|
+| **Least privilege / capability scoping** | The agent can only ever invoke the narrow set of tools and data its task needs; scoped, short-lived credentials | Foundational |
+| **Egress control** | Sandbox tool/code execution and restrict outbound network to an allowlist — cuts the trifecta's third leg | Foundational |
+| **Human-in-the-loop gates** | Consequential or irreversible actions require explicit confirmation, preview, or dry-run | OpenAI, *Practices for Governing Agentic AI Systems* (2023) |
+| **Dual-LLM pattern** | A privileged LLM that never sees untrusted content orchestrates; a quarantined LLM processes untrusted content but holds no tool access; data passes as opaque references | Willison (2023) |
+| **Capability-based enforcement (CaMeL)** | Extract control/data flow from the *trusted* user query and enforce, via a capability system, that untrusted data cannot influence sensitive actions — a defense *by design*, not by detection | Debenedetti et al. (2025), Google DeepMind / ETH Zürich |
+| **Provenance / content labeling** | Mark trusted vs. untrusted spans in context so policy treats tool/retrieved content as data, never as instructions | OWASP, NIST |
+
+### What detection *can* do
+
+Input/output scanning, canary tokens, and behavioral anomaly detection are useful **supplementary** layers — they raise attacker cost and catch known patterns — but they sit on top of the architecture above, never in place of it. Validate defenses empirically against an agent-security benchmark such as **AgentDojo** (Debenedetti et al., 2024) rather than assuming coverage.
 
 ---
 
@@ -157,6 +204,8 @@ Traditional security controls cannot prevent agents from misusing legitimate per
 ---
 
 ## Agentic SOAR: Security at Agent Speed
+
+> **Maturity note**: Agentic SOAR is **forward-looking**, not a control to deploy early. Defensive agents are themselves susceptible to prompt injection and manipulation, and autonomous response (auto-revoking credentials, isolating agents) can cause self-inflicted outages and false-positive lockouts. Treat it as an R&D direction layered on top of — never a replacement for — the architectural controls above, and keep humans in the loop for high-impact actions.
 
 ### The Speed Challenge
 
