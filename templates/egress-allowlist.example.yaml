@@ -1,0 +1,33 @@
+# Example egress allowlist for a sandboxed agent / tool runtime.
+# Goal: cut the "external communication" leg of the lethal trifecta.
+# Default-deny all outbound network; permit ONLY the hosts the task needs.
+# Adapt to your enforcement point (egress proxy, NetworkPolicy, firewall, sandbox config).
+
+policy:
+  default: deny            # everything not listed below is blocked
+  dns: allowlist-only      # resolve only allowlisted hosts; block arbitrary DNS exfil
+
+allow:
+  # --- model / platform APIs the agent legitimately calls ---
+  - host: api.anthropic.com
+    ports: [443]
+    reason: "LLM inference"
+  # - host: api.openai.com
+  #   ports: [443]
+
+  # --- explicitly approved internal services ---
+  - host: internal-api.example.com
+    ports: [443]
+    reason: "task data source — scoped, read-only token"
+
+# Everything else (raw IPs, link-shortened URLs, attacker-controlled domains,
+# remote image hosts, pastebins, webhook catchers) is denied by default.
+deny_examples:
+  - "*.requestbin.*"       # classic exfil sink
+  - "raw IP literals"      # e.g. http://203.0.113.5 — block to stop DNS-bypass exfil
+  - "auto-fetched URLs from untrusted content"
+
+# Enforcement notes:
+#  - Strip / do-not-auto-render remote images and URLs that arrive inside untrusted content.
+#  - Log every allowed and denied egress attempt; alert on denials (probe signal).
+#  - Combine with least-privilege tool scoping — egress control alone is not enough.

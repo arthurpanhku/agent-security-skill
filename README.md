@@ -18,7 +18,7 @@
 
 ---
 
-> **开放式研究项目**：本项目是一个开放式研究类项目，发起于香港大学（HKU），但不限于香港大学——欢迎学界、业界及各界研究者共同贡献。
+> **开放式研究项目**：本项目是**香港大学（HKU）一名硕士研究生的自我研究项目**——独立、非商业，且不隶属于文中任何厂商。项目**欢迎开放贡献**：学界、业界及各界研究者均可参与，欢迎提交勘误、补充与可核验的新来源。
 
 ## 简介
 
@@ -37,8 +37,9 @@
 | --- | --- |
 | [zero-trust-for-ai-agents.md](zero-trust-for-ai-agents.md) | 核心 Zero Trust 框架：威胁景观、三层架构、八阶段实施、提示词注入的架构性防御、Agentic SOAR、合规对齐 |
 | [references-and-frameworks.md](references-and-frameworks.md) | 厂商中立的外部框架交叉引用与「威胁 → 框架」映射（所有链接于 2026-06-26 核验） |
+| [vendor-security-sources.md](vendor-security-sources.md) | **LLM 厂商与科技大厂的第一方安全来源清单**：各家框架、护栏产品与开源红队工具（于 2026-06-30 核验） |
 | [SKILL.md](SKILL.md) | 作为 Claude Skill 的功能说明与用法 |
-| [INDEX.md](INDEX.md) | 全部文件的索引与导航 |
+| [templates/](templates/) | 可直接套用的安全产出模板（威胁建模、致命三要素、MCP 审查、egress 白名单） |
 
 ## 威胁景观
 
@@ -105,13 +106,16 @@ agent-security-skill/
 ├── SKILL.md                        Skill 功能说明与用法
 ├── zero-trust-for-ai-agents.md     核心 Zero Trust 框架
 ├── references-and-frameworks.md    外部框架交叉引用（已验证）
-├── PROJECT_SUMMARY.md              项目概览
-├── INDEX.md                        文件索引
 ├── CONTRIBUTING.md                 贡献指南
 ├── CHANGELOG.md                    变更日志
-├── GITHUB_SETUP.md                 GitHub 设置指南
 ├── LICENSE                         MIT 许可证
 ├── project.json                    项目元数据
+├── vendor-security-sources.md      LLM 厂商与科技大厂第一方安全来源清单
+├── templates/                      可直接套用的安全产出模板
+│   ├── threat-model-template.md        代理威胁建模模板
+│   ├── lethal-trifecta-assessment.md   致命三要素快速评估
+│   ├── mcp-server-vetting-checklist.md MCP 服务器审查清单
+│   └── egress-allowlist.example.yaml   默认拒绝的出站白名单样例
 ├── agent-security-skill.skill      Skill 打包文件（ZIP）
 └── assets/
     ├── logo.svg                    项目 Logo（横版）
@@ -130,5 +134,5 @@ agent-security-skill/
 ---
 
 <div align="center">
-  <sub>开放式研究项目 · 发起于香港大学（HKU），欢迎各界贡献 · 基于 Anthropic Zero Trust for AI Agents 并交叉引用多方公开研究</sub>
+  <sub>香港大学（HKU）硕士生自我研究项目 · 独立非商业，欢迎各界开放贡献 · 基于 Anthropic Zero Trust for AI Agents 并交叉引用多方公开研究</sub>
 </div>
