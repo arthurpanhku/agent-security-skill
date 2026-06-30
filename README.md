@@ -1,138 +1,144 @@
 <div align="center">
   <img src="assets/logo.svg" alt="Agent Security" width="440">
-  <p><strong>保护与加固 AI 代理系统的开放式安全研究</strong></p>
+  <p><strong>Open security research on protecting and hardening AI agent systems</strong></p>
   <p>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-MIT-4F46E5" alt="License: MIT"></a>
     <img src="https://img.shields.io/badge/version-1.0-6366F1" alt="Version 1.0">
     <img src="https://img.shields.io/badge/open%20research-welcome-22D3EE" alt="Open research">
     <img src="https://img.shields.io/badge/PRs-welcome-22c55e" alt="PRs welcome">
-    <img src="https://img.shields.io/badge/refs%20verified-2026--06--26-64748B" alt="References verified 2026-06-26">
+    <img src="https://img.shields.io/badge/refs%20verified-2026--06--30-64748B" alt="References verified 2026-06-30">
   </p>
   <p>
-    <a href="zero-trust-for-ai-agents.md">核心框架</a> ·
-    <a href="references-and-frameworks.md">外部参考</a> ·
-    <a href="SKILL.md">Skill 说明</a> ·
-    <a href="CONTRIBUTING.md">贡献指南</a>
+    <strong>English</strong> ·
+    <a href="README.zh-CN.md">中文</a>
+  </p>
+  <p>
+    <a href="zero-trust-for-ai-agents.md">Core framework</a> ·
+    <a href="references-and-frameworks.md">External references</a> ·
+    <a href="vendor-security-sources.md">Vendor sources</a> ·
+    <a href="SKILL.md">Skill</a> ·
+    <a href="CONTRIBUTING.md">Contributing</a>
   </p>
 </div>
 
 ---
 
-> **开放式研究项目**：本项目是**香港大学（HKU）一名硕士研究生的自我研究项目**——独立、非商业，且不隶属于文中任何厂商。项目**欢迎开放贡献**：学界、业界及各界研究者均可参与，欢迎提交勘误、补充与可核验的新来源。
+> **Open research project**: This is the **self-directed research project of a master's student at the University of Hong Kong (HKU)** — independent, non-commercial, and not affiliated with any vendor mentioned here. **Contributions are welcome** from academia, industry, and the wider community: corrections, additions, and verified new sources are all appreciated.
 
-## 简介
+## Overview
 
-汇集关于如何保护和加固 AI 代理（Agentic AI）系统的企业级安全框架、研究与最佳实践。核心基于 Anthropic 的 *Zero Trust for AI Agents*，并交叉引用 OpenAI、Google、Microsoft、NIST、MITRE、OWASP 等多方公开研究，力求**厂商中立、来源可核验**。
+A curated collection of enterprise-grade security frameworks, research, and best practices for protecting and hardening AI agent (agentic AI) systems. It is built on Anthropic's *Zero Trust for AI Agents* and cross-references public research from OpenAI, Google, Microsoft, NIST, MITRE, and OWASP — aiming to be **vendor-neutral with verifiable sources**.
 
-本项目帮助组织与开发者：
+This project helps organizations and developers:
 
-- 理解 AI 代理面临的安全威胁
-- 用 Zero Trust 架构保护代理系统
-- 满足合规要求（HIPAA、PCI-DSS、FedRAMP 等）
-- 建立可观测、可响应的安全运营能力
+- Understand the security threats facing AI agents
+- Protect agent systems with a Zero Trust architecture
+- Meet compliance requirements (HIPAA, PCI-DSS, FedRAMP, etc.)
+- Build observable, responsive security operations
 
-## 核心内容
+## Core content
 
-| 文档 | 内容 |
+| Document | What's inside |
 | --- | --- |
-| [zero-trust-for-ai-agents.md](zero-trust-for-ai-agents.md) | 核心 Zero Trust 框架：威胁景观、三层架构、八阶段实施、提示词注入的架构性防御、Agentic SOAR、合规对齐 |
-| [references-and-frameworks.md](references-and-frameworks.md) | 厂商中立的外部框架交叉引用与「威胁 → 框架」映射（所有链接于 2026-06-26 核验） |
-| [vendor-security-sources.md](vendor-security-sources.md) | **LLM 厂商与科技大厂的第一方安全来源清单**：各家框架、护栏产品与开源红队工具（于 2026-06-30 核验） |
-| [SKILL.md](SKILL.md) | 作为 Claude Skill 的功能说明与用法 |
-| [templates/](templates/) | 可直接套用的安全产出模板（威胁建模、致命三要素、MCP 审查、egress 白名单） |
+| [zero-trust-for-ai-agents.md](zero-trust-for-ai-agents.md) | The core Zero Trust framework: threat landscape, three-tier architecture, eight-phase implementation, architectural defense against prompt injection, Agentic SOAR, compliance alignment |
+| [references-and-frameworks.md](references-and-frameworks.md) | Vendor-neutral cross-reference of external frameworks and a "threat → framework" mapping (all links verified 2026-06-26) |
+| [vendor-security-sources.md](vendor-security-sources.md) | **First-party agent-security source catalog from LLM providers and tech giants**: their frameworks, guardrail products, and open red-team tooling (verified 2026-06-30) |
+| [SKILL.md](SKILL.md) | Function and usage as a Claude Skill |
+| [templates/](templates/) | Ready-to-use security artifacts (threat model, lethal-trifecta assessment, MCP vetting, egress allowlist) |
 
-## 威胁景观
+## Threat landscape
 
-1. **提示词注入（Prompt Injection）** — 在输入/外部数据中插入恶意指令以覆盖预期行为
-2. **工具中毒（Tool Poisoning）** — 受损的外部工具返回恶意数据或隐藏指令
-3. **身份与权限滥用** — 被盗或泄露的代理凭证、横向移动、权限提升
-4. **内存中毒（Memory Poisoning）** — 向代理记忆注入虚假信息
-5. **供应链攻击** — 代理依赖链（模型、工具、流水线）中的组件被攻破
-6. **MCP 与工具供应链威胁** — 工具描述投毒、rug pull、confused deputy、令牌窃取
+1. **Prompt Injection** — malicious instructions inserted into inputs/external data to override intended behavior
+2. **Tool Poisoning** — compromised external tools returning malicious data or hidden instructions
+3. **Identity & Privilege Abuse** — stolen or leaked agent credentials, lateral movement, privilege escalation
+4. **Memory Poisoning** — injecting false information into agent memory
+5. **Supply Chain Attacks** — components in the agent dependency chain (models, tools, pipelines) being compromised
+6. **MCP & Tool Supply-Chain Threats** — tool-description poisoning, rug pulls, confused deputy, token theft
 
-> **关键认知**：间接提示词注入目前**没有可靠的「检测/过滤」解法**。稳健防御是**架构性**的——最小权限、隔离、限制爆炸半径（[致命三要素](zero-trust-for-ai-agents.md#defending-against-prompt-injection-architecture-over-detection)）。检测只能作为辅助层。
+> **Key insight**: Indirect prompt injection has **no reliable "detection/filtering" solution** today. Durable defense is **architectural** — least privilege, isolation, limiting the blast radius (the [lethal trifecta](zero-trust-for-ai-agents.md#defending-against-prompt-injection-architecture-over-detection)). Detection is a supplementary layer only.
 
-## Zero Trust 核心原则
+## Zero Trust core principles
 
-| 原则 | 含义 | 实施 |
+| Principle | Meaning | Implementation |
 | --- | --- | --- |
-| Trust Nothing | 信任零信任 | 密码学验证所有身份 |
-| Verify Everything | 验证一切 | 可观测日志与审计跟踪 |
-| Assume Breach | 假设已被攻破 | 工程化隔离与防御 |
-| Respond at Agent Speed | 按代理速度响应 | 自动化威胁检测与响应 |
-| Improve Continuously | 持续改进 | 渗透测试与红队演练 |
+| Trust Nothing | Assume nothing is secure by default | Cryptographically verify every identity |
+| Verify Everything | Validate every operation | Observable logging and audit trails |
+| Assume Breach | Design as if already compromised | Engineered isolation and defense |
+| Respond at Agent Speed | Match attack speed | Automated threat detection and response |
+| Improve Continuously | Keep adapting | Penetration testing and red teaming |
 
-## 三层实施路线
+## Three-tier implementation path
 
-| 层级 | 周期 | 重点能力 |
+| Tier | Timeline | Focus |
 | --- | --- | --- |
-| **Foundation** | 2–4 周 | 代理身份与认证、工具访问日志、输入校验、ACL |
-| **Advanced** | 2–3 个月 | 密码学身份（mTLS）、任务范围权限、内存隔离、行为异常检测 |
-| **Optimized** | 3–6 个月 | 持续验证、细粒度上下文权限、内存完整性、供应链验证、Agentic SOAR |
+| **Foundation** | 2–4 weeks | Agent identity & authentication, tool-access logging, input validation, ACLs |
+| **Advanced** | 2–3 months | Cryptographic identity (mTLS), task-scoped permissions, memory isolation, behavioral anomaly detection |
+| **Optimized** | 3–6 months | Continuous verification, fine-grained context-aware permissions, memory integrity, supply-chain verification, Agentic SOAR |
 
-## 参考与框架
+## References & frameworks
 
-本项目交叉引用以下公开来源（完整清单与链接见 [references-and-frameworks.md](references-and-frameworks.md)）：
+This project cross-references the following public sources (full list and links in [references-and-frameworks.md](references-and-frameworks.md)):
 
-- **厂商**：Anthropic（Zero Trust for AI Agents）、OpenAI（Practices for Governing Agentic AI Systems）、Google（SAIF）、Microsoft（Taxonomy of Failure Modes in Agentic AI Systems）
-- **标准**：NIST AI RMF / Generative AI Profile、MITRE ATLAS
-- **社区**：OWASP Top 10 for LLM Applications、OWASP Agentic AI – Threats and Mitigations
-- **学界**：Greshake et al.（间接注入）、AgentDojo（基准）、CaMeL（按设计防注入）、Willison（致命三要素 / Dual-LLM）
+- **Vendors**: Anthropic (Zero Trust for AI Agents), OpenAI (Practices for Governing Agentic AI Systems), Google (SAIF), Microsoft (Taxonomy of Failure Modes in Agentic AI Systems)
+- **Standards**: NIST AI RMF / Generative AI Profile, MITRE ATLAS
+- **Community**: OWASP Top 10 for LLM Applications, OWASP Agentic AI – Threats and Mitigations
+- **Academia**: Greshake et al. (indirect injection), AgentDojo (benchmark), CaMeL (defense by design), Willison (lethal trifecta / Dual-LLM)
 
-## 合规对齐
+## Compliance alignment
 
-| 领域 | 框架 |
+| Domain | Frameworks |
 | --- | --- |
-| 医疗 | HIPAA |
-| 支付 / 财务 | PCI-DSS、SOX |
-| 政府 | FedRAMP、FISMA |
+| Healthcare | HIPAA |
+| Payments / Finance | PCI-DSS, SOX |
+| Government | FedRAMP, FISMA |
 
-## 贡献
+## Contributing
 
-本项目欢迎**公开发布**的安全研究与框架贡献。流程：
+This project welcomes **publicly released** security research and framework contributions. Workflow:
 
-1. Fork 本仓库
-2. 创建特性分支（`git checkout -b feature/your-feature`）
-3. 提交更改并附完整来源与引用
-4. 推送并开启 Pull Request
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Commit your changes with complete sources and citations
+4. Push and open a Pull Request
 
-详见 [CONTRIBUTING.md](CONTRIBUTING.md)。要求：内容须公开发布、提供可核验来源、保持客观准确、遵循现有 Markdown 风格。
+See [CONTRIBUTING.md](CONTRIBUTING.md). Requirements: content must be publicly released, provide verifiable sources, stay objective and accurate, and follow the existing Markdown style.
 
-## 项目结构
+## Project structure
 
 ```
 agent-security-skill/
-├── README.md                       项目说明（本文件）
-├── SKILL.md                        Skill 功能说明与用法
-├── zero-trust-for-ai-agents.md     核心 Zero Trust 框架
-├── references-and-frameworks.md    外部框架交叉引用（已验证）
-├── CONTRIBUTING.md                 贡献指南
-├── CHANGELOG.md                    变更日志
-├── LICENSE                         MIT 许可证
-├── project.json                    项目元数据
-├── vendor-security-sources.md      LLM 厂商与科技大厂第一方安全来源清单
-├── templates/                      可直接套用的安全产出模板
-│   ├── threat-model-template.md        代理威胁建模模板
-│   ├── lethal-trifecta-assessment.md   致命三要素快速评估
-│   ├── mcp-server-vetting-checklist.md MCP 服务器审查清单
-│   └── egress-allowlist.example.yaml   默认拒绝的出站白名单样例
-├── agent-security-skill.skill      Skill 打包文件（ZIP）
+├── README.md                       Project overview (English, default)
+├── README.zh-CN.md                 Project overview (Chinese)
+├── SKILL.md                        Skill function and usage
+├── zero-trust-for-ai-agents.md     Core Zero Trust framework
+├── references-and-frameworks.md    External framework cross-references (verified)
+├── vendor-security-sources.md      First-party sources from LLM providers & tech giants
+├── CONTRIBUTING.md                 Contribution guide
+├── CHANGELOG.md                    Change log
+├── LICENSE                         MIT license
+├── project.json                    Project metadata
+├── templates/                      Ready-to-use security artifacts
+│   ├── threat-model-template.md        Agent threat-modeling template
+│   ├── lethal-trifecta-assessment.md   Lethal-trifecta quick assessment
+│   ├── mcp-server-vetting-checklist.md MCP server vetting checklist
+│   └── egress-allowlist.example.yaml   Default-deny egress allowlist sample
+├── agent-security-skill.skill      Skill package (ZIP)
 └── assets/
-    ├── logo.svg                    项目 Logo（横版）
-    └── icon.svg                    项目图标（方形）
+    ├── logo.svg                    Project logo (horizontal)
+    └── icon.svg                    Project icon (square)
 ```
 
-## 许可证
+## License
 
-本项目采用 MIT 许可证 — 详见 [LICENSE](LICENSE)。
+This project is licensed under the MIT License — see [LICENSE](LICENSE).
 
-## 联系与支持
+## Contact & support
 
-- 🐛 问题与建议：[Issues](https://github.com/arthurpanhku/agent-security-skill/issues)
-- 💬 讨论与社区：[Discussions](https://github.com/arthurpanhku/agent-security-skill/discussions)
+- 🐛 Issues & suggestions: [Issues](https://github.com/arthurpanhku/agent-security-skill/issues)
+- 💬 Discussion & community: [Discussions](https://github.com/arthurpanhku/agent-security-skill/discussions)
 
 ---
 
 <div align="center">
-  <sub>香港大学（HKU）硕士生自我研究项目 · 独立非商业，欢迎各界开放贡献 · 基于 Anthropic Zero Trust for AI Agents 并交叉引用多方公开研究</sub>
+  <sub>A self-research project by a master's student at the University of Hong Kong (HKU) · Independent and non-commercial, open to contributions · Based on Anthropic's Zero Trust for AI Agents, cross-referencing multiple public sources</sub>
 </div>

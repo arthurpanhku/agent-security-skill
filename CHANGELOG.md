@@ -40,6 +40,7 @@
 ## [Unreleased]
 
 ### Added
+- **README 双语化**：`README.md` 改为英文（默认，符合国际开放研究项目惯例），新增 `README.zh-CN.md` 中文版；两者顶部提供 `English · 中文` 语言切换链接，内容保持同步
 - **可执行 Skill 化**：为 `SKILL.md` 添加标准 YAML frontmatter（`name` / `description`），使其可作为 Claude Skill 被正确识别与触发；重写为操作性指令而非营销文案
 - **templates/**：四份可直接套用的安全产出模板 —— 代理威胁建模、致命三要素快速评估、MCP 服务器审查清单、默认拒绝的出站白名单样例（egress allowlist）
 - **vendor-security-sources.md**：LLM 厂商与科技大厂第一方安全来源清单（Anthropic / OpenAI / Google / Meta / Microsoft / AWS / NVIDIA / IBM / Cisco / CSA 等），含开源红队工具（PyRIT、garak、NeMo Guardrails 等）；所有链接于 2026-06-30 核验
