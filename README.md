@@ -41,6 +41,7 @@ This project helps organizations and developers:
 | Document | What's inside |
 | --- | --- |
 | [zero-trust-for-ai-agents.md](zero-trust-for-ai-agents.md) | The core Zero Trust framework: threat landscape, three-tier architecture, eight-phase implementation, architectural defense against prompt injection, Agentic SOAR, compliance alignment |
+| [threat-control-crosswalk.md](threat-control-crosswalk.md) | **The "Rosetta Stone"** — maps each agent threat across OWASP / MITRE ATLAS / CSA MAESTRO / Microsoft taxonomy → ISO 42001 & NIST AI RMF controls → concrete control → validation (work in progress) |
 | [references-and-frameworks.md](references-and-frameworks.md) | Vendor-neutral cross-reference of external frameworks and a "threat → framework" mapping (all links verified 2026-06-26) |
 | [vendor-security-sources.md](vendor-security-sources.md) | **First-party agent-security source catalog from LLM providers and tech giants**: their frameworks, guardrail products, and open red-team tooling (verified 2026-06-30) |
 | [SKILL.md](SKILL.md) | Function and usage as a Claude Skill |

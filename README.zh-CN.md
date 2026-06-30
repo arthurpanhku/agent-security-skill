@@ -41,6 +41,7 @@
 | 文档 | 内容 |
 | --- | --- |
 | [zero-trust-for-ai-agents.md](zero-trust-for-ai-agents.md) | 核心 Zero Trust 框架：威胁景观、三层架构、八阶段实施、提示词注入的架构性防御、Agentic SOAR、合规对齐 |
+| [threat-control-crosswalk.md](threat-control-crosswalk.md) | **「罗塞塔石碑」** —— 把每个 agent 威胁在 OWASP / MITRE ATLAS / CSA MAESTRO / 微软分类法间对齐 → 映射到 ISO 42001 与 NIST AI RMF 控制 → 具体控制 → 验证方法（进行中） |
 | [references-and-frameworks.md](references-and-frameworks.md) | 厂商中立的外部框架交叉引用与「威胁 → 框架」映射（所有链接于 2026-06-26 核验） |
 | [vendor-security-sources.md](vendor-security-sources.md) | **LLM 厂商与科技大厂的第一方安全来源清单**：各家框架、护栏产品与开源红队工具（于 2026-06-30 核验） |
 | [SKILL.md](SKILL.md) | 作为 Claude Skill 的功能说明与用法 |

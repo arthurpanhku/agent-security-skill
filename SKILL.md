@@ -46,8 +46,10 @@ fix — defend with architecture, not filters.** Limit what a compromised agent 
 3. **Validate empirically** — don't assume coverage. Test defenses with an agent
    benchmark like **AgentDojo**, and red-team with tooling listed in
    [vendor-security-sources.md](vendor-security-sources.md) (PyRIT, garak).
-4. **Cross-reference** to standard vocabularies (OWASP LLM Top 10, MITRE ATLAS)
-   via [references-and-frameworks.md](references-and-frameworks.md).
+4. **Cross-reference & translate** a threat across standards (OWASP, MITRE
+   ATLAS, CSA MAESTRO) and governance controls (ISO/IEC 42001, NIST AI RMF)
+   using [threat-control-crosswalk.md](threat-control-crosswalk.md); source
+   list in [references-and-frameworks.md](references-and-frameworks.md).
 
 ## Decision shortcuts
 
