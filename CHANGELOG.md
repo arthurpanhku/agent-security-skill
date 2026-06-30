@@ -53,6 +53,8 @@
 - Agentic SOAR 重新定位为前瞻性方向，并标注其自身风险（防御 Agent 亦可被注入、自动响应可能误杀）
 - **重写 README**：加入 Logo 与徽章、修正失效的「项目结构」列表与 `yourusername` 占位链接、对齐已更新内容与多方来源
 - **项目归属标注**：明确为香港大学（HKU）硕士生的自我研究项目 —— 独立、非商业、不隶属任何厂商，欢迎开放贡献（README、SKILL.md、vendor-security-sources.md 统一）
+- **重建 `agent-security-skill.skill` 打包文件**：纳入新的 SKILL.md（含 frontmatter）、templates/、vendor-security-sources.md、references-and-frameworks.md 及 assets，使包内相对链接均可解析（此前打包内容已严重滞后）
+- 修正 `project.json` 仓库地址占位符（`yourusername` → `arthurpanhku`）
 
 ### Removed
 - 精简重复的元文档：删除 **PROJECT_SUMMARY.md**、**INDEX.md**、**GITHUB_SETUP.md**（三者与 README 大量重复，且 GitHub 设置指南不应入库）；导航统一回归 README，并同步清理其内部链接
