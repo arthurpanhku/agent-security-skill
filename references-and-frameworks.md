@@ -41,7 +41,7 @@ This document makes the skill **vendor-neutral**. The core [zero-trust-for-ai-ag
 
 ## 4. Threat → Framework Cross-Mapping
 
-Use this to translate this skill's threat list into the standard vocabularies above.
+Use this to translate this skill's threat list into the standard vocabularies above. For the **expanded** crosswalk — adding CSA MAESTRO, Microsoft's taxonomy, ISO/IEC 42001 Annex A, NIST AI RMF, concrete controls, and validation methods per threat — see [threat-control-crosswalk.md](threat-control-crosswalk.md).
 
 | This skill's threat | OWASP LLM Top 10 | MITRE ATLAS (theme) | Primary mitigation reference |
 |---------------------|------------------|---------------------|------------------------------|
