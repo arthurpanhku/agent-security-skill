@@ -88,6 +88,7 @@ This project cross-references the following public sources (full list and links 
 
 | Domain | Frameworks |
 | --- | --- |
+| AI governance / management system | ISO/IEC 42001:2023 |
 | Healthcare | HIPAA |
 | Payments / Finance | PCI-DSS, SOX |
 | Government | FedRAMP, FISMA |

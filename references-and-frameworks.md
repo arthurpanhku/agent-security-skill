@@ -24,6 +24,7 @@ This document makes the skill **vendor-neutral**. The core [zero-trust-for-ai-ag
 |--------|----------|----------------|------|
 | **NIST** | AI Risk Management Framework (AI RMF 1.0) | The de-facto governance baseline for US-regulated deployments | https://www.nist.gov/itl/ai-risk-management-framework |
 | **NIST** | Generative AI Profile (NIST AI 600-1) | GenAI-specific risk profile layered on the RMF | https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.600-1.pdf |
+| **ISO/IEC** | 42001:2023 — AI Management System (AIMS) | World's first certifiable AI management-system standard; the governance wrapper (policy, risk treatment, continual improvement) around technical controls | https://www.iso.org/standard/42001 |
 | **MITRE** | ATLAS (Adversarial Threat Landscape for AI Systems) | Standardized adversarial TTP vocabulary for AI — use it to label threats | https://atlas.mitre.org/ |
 
 ## 3. Academic & Community Work
