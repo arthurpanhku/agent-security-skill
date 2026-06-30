@@ -40,6 +40,9 @@
 ## [Unreleased]
 
 ### Added
+- **可执行 Skill 化**：为 `SKILL.md` 添加标准 YAML frontmatter（`name` / `description`），使其可作为 Claude Skill 被正确识别与触发；重写为操作性指令而非营销文案
+- **templates/**：四份可直接套用的安全产出模板 —— 代理威胁建模、致命三要素快速评估、MCP 服务器审查清单、默认拒绝的出站白名单样例（egress allowlist）
+- **vendor-security-sources.md**：LLM 厂商与科技大厂第一方安全来源清单（Anthropic / OpenAI / Google / Meta / Microsoft / AWS / NVIDIA / IBM / Cisco / CSA 等），含开源红队工具（PyRIT、garak、NeMo Guardrails 等）；所有链接于 2026-06-30 核验
 - **references-and-frameworks.md**：厂商中立的外部框架交叉引用（OpenAI、Google SAIF、Microsoft、NIST、MITRE ATLAS、OWASP），含威胁→框架映射；所有链接于 2026-06-26 核验
 - 威胁景观新增 **MCP 与工具供应链威胁**（工具投毒、rug pull、confused deputy、令牌窃取）
 - 新增 **"提示词注入的架构性防御"** 章节：致命三要素、Dual-LLM、CaMeL、egress 控制、人在环
@@ -49,13 +52,20 @@
 - 修正提示词注入的定性：从"可检测/可过滤"改为架构性防御为主、检测为辅（间接注入无可靠检测解）
 - Agentic SOAR 重新定位为前瞻性方向，并标注其自身风险（防御 Agent 亦可被注入、自动响应可能误杀）
 - **重写 README**：加入 Logo 与徽章、修正失效的「项目结构」列表与 `yourusername` 占位链接、对齐已更新内容与多方来源
+- **项目归属标注**：明确为香港大学（HKU）硕士生的自我研究项目 —— 独立、非商业、不隶属任何厂商，欢迎开放贡献（README、SKILL.md、vendor-security-sources.md 统一）
+- **重建 `agent-security-skill.skill` 打包文件**：纳入新的 SKILL.md（含 frontmatter）、templates/、vendor-security-sources.md、references-and-frameworks.md 及 assets，使包内相对链接均可解析（此前打包内容已严重滞后）
+- 修正 `project.json` 仓库地址占位符（`yourusername` → `arthurpanhku`）
+
+### Removed
+- 精简重复的元文档：删除 **PROJECT_SUMMARY.md**、**INDEX.md**、**GITHUB_SETUP.md**（三者与 README 大量重复，且 GitHub 设置指南不应入库）；导航统一回归 README，并同步清理其内部链接
 
 ### Planned
 - [ ] 添加供应链安全详细分析
-- [ ] 创建合规检查清单
+- [ ] 创建合规检查清单（HIPAA / PCI-DSS / FedRAMP 逐条）
 - [ ] 添加实现案例研究
-- [ ] 开发自动化安全评估工具
-- [ ] 创建视频教程
+- [x] ~~开发自动化安全评估工具~~ → 已提供 templates/ 模板套件（威胁建模、致命三要素、MCP 审查、egress 白名单）
+- [ ] 提供可复现的 AgentDojo 评测脚本（验证防御有效性）
+- [ ] 加入 CI 链接核验 + markdown lint（守住「可核验」招牌）
 - [ ] 建立社区讨论论坛
 
 ---

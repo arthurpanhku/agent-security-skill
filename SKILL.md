@@ -1,208 +1,81 @@
-# Agent Security Skill
+---
+name: agent-security
+description: >-
+  Security guidance and ready-to-use templates for hardening AI agent and
+  MCP-based systems against prompt injection, tool poisoning, identity/privilege
+  abuse, memory poisoning, and supply-chain attacks. Use when reviewing or
+  designing an AI agent or MCP server configuration, threat-modeling an agentic
+  system, assessing the "lethal trifecta" / prompt-injection exposure, applying
+  Zero Trust tiers to agents, vetting a new MCP server/tool, or mapping agent
+  risks to compliance frameworks (HIPAA, PCI-DSS, SOX, FedRAMP, FISMA).
+license: MIT
+metadata:
+  project: "HKU master's-student self-research project — open to contributions"
+  based_on: "Anthropic — Zero Trust for AI Agents"
+  version: "1.1"
+---
 
-## Overview
+# Agent Security
 
-Agent Security Skill 是一个全面的资源库，汇集关于如何保护和加固 AI 代理系统的企业级安全框架、研究报告和最佳实践。
+Apply enterprise Zero Trust principles to AI agent and MCP systems. The core
+stance: **prompt injection (especially indirect) has no reliable detection-based
+fix — defend with architecture, not filters.** Limit what a compromised agent can
+*do*; treat detection as defense-in-depth only.
 
-## What This Skill Does
+## When to use this skill
 
-### 核心功能
+- Reviewing or designing an AI agent / MCP server configuration for security
+- Threat-modeling an agentic system or multi-agent workflow
+- Checking whether an agent is exposed to the **lethal trifecta** (private data +
+  untrusted content + external egress)
+- Vetting a new or changed MCP server / tool before approval
+- Choosing a Zero Trust tier and implementation phase
+- Mapping agent risks to compliance (HIPAA, PCI-DSS, SOX, FedRAMP, FISMA)
 
-1. **Zero Trust Framework Reference**
-   - 三层安全架构（Foundation, Advanced, Optimized）
-   - 八阶段实现工作流
-   - Agentic SOAR 自动化防御机制
+## How to use it
 
-2. **Threat Intelligence**
-   - 提示词注入攻击分析
-   - 工具中毒检测和防护
-   - 身份和权限滥用预防
-   - 内存安全保护
-   - 供应链风险管理
+1. **Read the framework** in [zero-trust-for-ai-agents.md](zero-trust-for-ai-agents.md)
+   — threat landscape, the lethal trifecta, architectural defense patterns
+   (Dual-LLM, CaMeL, egress control), 3 tiers, 8-phase workflow, compliance.
+2. **Produce an artifact** using the bundled templates — copy and fill in:
+   - [templates/threat-model-template.md](templates/threat-model-template.md) — full agent threat model
+   - [templates/lethal-trifecta-assessment.md](templates/lethal-trifecta-assessment.md) — fast per-agent exfiltration check
+   - [templates/mcp-server-vetting-checklist.md](templates/mcp-server-vetting-checklist.md) — vet an MCP server/tool
+   - [templates/egress-allowlist.example.yaml](templates/egress-allowlist.example.yaml) — sample default-deny egress config
+3. **Validate empirically** — don't assume coverage. Test defenses with an agent
+   benchmark like **AgentDojo**, and red-team with tooling listed in
+   [vendor-security-sources.md](vendor-security-sources.md) (PyRIT, garak).
+4. **Cross-reference** to standard vocabularies (OWASP LLM Top 10, MITRE ATLAS)
+   via [references-and-frameworks.md](references-and-frameworks.md).
 
-3. **Compliance Guidance**
-   - HIPAA（医疗保健）
-   - PCI-DSS（支付卡）
-   - SOX（财务报告）
-   - FedRAMP 和 FISMA（政府）
+## Decision shortcuts
 
-4. **Implementation Roadmap**
-   - 快速实施指南
-   - 分阶段部署策略
-   - 成功指标和检查清单
+- **"Is this agent dangerous?"** → run the lethal-trifecta assessment. All three
+  legs present = exfiltration risk; cut at least one (usually egress or untrusted-
+  content isolation).
+- **"Can I add this MCP server?"** → run the MCP vetting checklist. Treat tool
+  names/descriptions as untrusted; pin versions; require re-approval on change.
+- **"Where do I start?"** → Foundation tier (2–4 wks): agent identity, tool-access
+  logging, input validation, ACLs. Don't start with Agentic SOAR (forward-looking).
 
-## Key Features
+## Threats covered
 
-✅ **企业级框架** - 基于 Anthropic 官方安全研究  
-✅ **可实施的指导** - 具体的实现步骤和时间表  
-✅ **威胁分析** - 深入的攻击向量和防御机制  
-✅ **合规对齐** - 针对不同行业的规制要求  
-✅ **最佳实践** - 来自安全专家的建议  
-✅ **持续更新** - 随着威胁景观演变而更新  
+Prompt injection · Tool poisoning · MCP / tool supply-chain (rug-pull, confused
+deputy, token theft, cross-server shadowing) · Identity & privilege abuse ·
+Memory poisoning · Supply-chain attacks.
 
-## Use Cases
+## Core principles
 
-### For Security Leaders
-- 制定企业 AI 代理安全政策
-- 评估当前安全姿态
-- 规划安全投资
-- 实现合规性框架
-
-### For Technical Teams
-- 设计安全的代理架构
-- 实施访问控制和隔离
-- 部署监控和检测
-- 建立事件响应流程
-
-### For Organizations
-- 理解 AI 代理风险
-- 建立安全文化
-- 培训团队
-- 评估第三方工具
-
-## Key Resources
-
-### 主要内容
-
-- **zero-trust-for-ai-agents.md** - 核心 Zero Trust 框架
-  - 安全考虑
-  - 威胁景观（含 MCP / 工具供应链威胁）
-  - 三层架构
-  - 提示词注入的架构性防御（致命三要素、Dual-LLM、CaMeL）
-  - 实施工作流
-  - Agentic SOAR（前瞻性）
-  - 合规指南
-
-- **references-and-frameworks.md** - 厂商中立的外部框架交叉引用
-  - OpenAI / Google / Microsoft / NIST / MITRE / OWASP 的已验证来源
-  - 威胁 → 框架（OWASP LLM Top 10、MITRE ATLAS）映射
-  - 学界与社区研究（Greshake、AgentDojo、CaMeL、lethal trifecta）
-
-### 相关标准
-
-- NIST Cybersecurity Framework / AI RMF (AI 600-1)
-- Zero Trust Architecture 原则
-- OWASP Top 10 for LLM Applications + OWASP Agentic AI Threats
-- MITRE ATLAS（AI 对抗威胁矩阵）
-- 完整的多方来源见 **references-and-frameworks.md**
-
-## Quick Implementation Timeline
-
-### Week 1-4: Foundation Tier
-- 代理身份和认证
-- 工具访问日志
-- 提示词注入检测
-
-### Month 2-3: Advanced Tier
-- 密码学身份
-- 任务范围权限
-- 行为检测
-
-### Month 3-6: Optimized Tier
-- 自动威胁响应
-- Agentic SOAR
-- 供应链验证
-
-## Zero Trust Core Principles
-
-| 原则 | 实施 |
-|------|------|
-| Trust Nothing | 密码学验证所有身份 |
-| Verify Everything | 完整的操作日志和审计 |
-| Assume Breach | 隔离和防御机制 |
-| Agent Speed | 自动化响应系统 |
-| Continuous Improvement | 定期评估和更新 |
-
-## Threat Landscape Coverage
-
-1. **Prompt Injection Attacks** - 架构性防御（最小权限、隔离、致命三要素）；检测仅作辅助
-2. **Tool Poisoning** - 数据验证和隔离
-3. **Identity & Privilege Abuse** - 密码学身份
-4. **Memory Poisoning** - 内存保护
-5. **Supply Chain Attacks** - 依赖链验证
-
-## Compliance Frameworks
-
-### Healthcare (HIPAA)
-- PHI 隔离
-- 审计跟踪（6+ 年）
-- 同意管理
-
-### Financial Services (PCI-DSS, SOX)
-- 卡数据隔离
-- 交易验证
-- 访问控制
-
-### Government (FedRAMP, FISMA)
-- FIPS 199 分类
-- ATO 对齐
-- 供应链管理
-
-## How to Use This Skill
-
-### Step 1: Understand Your Current State
-- Review current agent deployments
-- Identify security gaps
-- Assess compliance requirements
-
-### Step 2: Choose Your Tier
-- **Foundation**: 基本保护，2-4 周
-- **Advanced**: 生产级别，2-3 个月
-- **Optimized**: 企业级别，3-6 个月
-
-### Step 3: Follow Implementation Workflow
-1. Identity & Cryptographic Verification
-2. Tool Access Scoping
-3. Sandboxing & Isolation
-4. Input/Output Controls
-5. Memory Safeguards
-6. Logging & Monitoring
-7. Threat Detection & Response
-8. Continuous Improvement
-
-### Step 4: Implement and Monitor
-- Deploy controls progressively
-- Monitor effectiveness
-- Adjust based on findings
-- Update regularly
-
-## Integration Points
-
-This skill complements:
-- Claude Security products
-- Enterprise security frameworks
-- Compliance management systems
-- Threat intelligence platforms
-- SIEM/SOC solutions
-
-## Updates and Maintenance
-
-This skill is maintained as the threat landscape evolves:
-- Regular security research integration
-- Emerging threat updates
-- Best practice enhancements
-- Compliance standard updates
-
-## Support and Community
-
-- 📚 Documentation: Full guides and references
-- 💬 Community: Share implementations and learn
-- 🔗 Resources: Links to official frameworks
-- 📖 References: Research citations
-
-## Version History
-
-- **v1.0** (June 26, 2026) - Initial release
-  - Zero Trust framework
-  - Implementation guide
-  - Compliance mapping
-
-## License
-
-MIT License - See LICENSE file for details
+| Principle | Implementation |
+|-----------|----------------|
+| Trust Nothing | Cryptographically verify every identity |
+| Verify Everything | Full operation logging + audit trail |
+| Assume Breach | Engineer isolation; limit blast radius |
+| Respond at Agent Speed | Automated detection/response (with human gates) |
+| Improve Continuously | Pen-testing, red-teaming, benchmark validation |
 
 ---
 
-**Last Updated**: June 26, 2026  
-**Maintained by**: agent-security-skill Community  
-**Based on**: Anthropic's Zero Trust for AI Agents Enterprise Framework
+*Part of the agent-security-skill project — a self-directed research project by a
+master's student at the University of Hong Kong (HKU). Independent, non-commercial,
+open to contributions. Based on Anthropic's Zero Trust for AI Agents.*
