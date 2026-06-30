@@ -37,7 +37,7 @@ For each threat: is it applicable, what's the current control, what's the gap?
 - ☐ Logging + alerting verified end-to-end
 
 ## 5. Compliance overlay (if applicable)
-☐ HIPAA (PHI isolation, 6yr audit) ☐ PCI-DSS / SOX (cardholder isolation, txn verification) ☐ FedRAMP / FISMA (FIPS 199, ATO)
+☐ ISO/IEC 42001 (AI mgmt system — policy, risk treatment, this model feeds Annex A controls) ☐ HIPAA (PHI isolation, 6yr audit) ☐ PCI-DSS / SOX (cardholder isolation, txn verification) ☐ FedRAMP / FISMA (FIPS 199, ATO)
 
 ## 6. Sign-off
 Residual risks accepted by: `____` Date: `____`

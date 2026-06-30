@@ -50,6 +50,7 @@
     "Agentic SOAR"
   ],
   "complianceFrameworks": [
+    "ISO/IEC 42001",
     "HIPAA",
     "PCI-DSS",
     "SOX",

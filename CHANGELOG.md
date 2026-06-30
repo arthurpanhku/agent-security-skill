@@ -40,6 +40,7 @@
 ## [Unreleased]
 
 ### Added
+- **ISO/IEC 42001:2023 支持**：新增对全球首个 AI 管理体系（AIMS）标准的对齐 —— 作为横切的**治理/管理体系层**（policy、风险处置、持续改进），区别于 HIPAA/PCI 等行业合规。已接入核心框架的合规章节、references 标准清单、双语 README 合规表、`project.json`、威胁建模模板的合规勾选项，以及 SKILL.md 触发描述
 - **README 双语化**：`README.md` 改为英文（默认，符合国际开放研究项目惯例），新增 `README.zh-CN.md` 中文版；两者顶部提供 `English · 中文` 语言切换链接，内容保持同步
 - **可执行 Skill 化**：为 `SKILL.md` 添加标准 YAML frontmatter（`name` / `description`），使其可作为 Claude Skill 被正确识别与触发；重写为操作性指令而非营销文案
 - **templates/**：四份可直接套用的安全产出模板 —— 代理威胁建模、致命三要素快速评估、MCP 服务器审查清单、默认拒绝的出站白名单样例（egress allowlist）

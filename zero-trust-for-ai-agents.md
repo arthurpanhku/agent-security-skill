@@ -244,6 +244,17 @@ Agent attack speeds: **milliseconds to seconds**
 
 ## Compliance Alignment
 
+> Two layers fit together: a **management-system standard** (ISO/IEC 42001) provides the governance wrapper — policy, roles, risk treatment, continual improvement — while the **industry regimes** below impose domain-specific data and audit controls. The Zero Trust tiers and eight-phase workflow in this document supply the technical controls that both layers require.
+
+### AI Governance & Management System (ISO/IEC 42001:2023)
+The world's first AI management system (AIMS) standard — a certifiable, risk-based, Plan-Do-Check-Act framework (harmonized structure, like ISO/IEC 27001) for the responsible development, provision, and use of AI systems.
+
+- Establish an AI policy, objectives, and clear roles/accountability for agent systems
+- Run AI risk assessment and risk treatment (map to the [threat landscape](#threat-landscape) above)
+- Apply Annex A controls; treat this skill's Zero Trust controls as part of the risk-treatment plan
+- Maintain documented information, internal audit, management review, and continual improvement
+- Reference: [ISO/IEC 42001:2023](https://www.iso.org/standard/42001)
+
 ### Healthcare (HIPAA)
 - PHI (Protected Health Information) isolation
 - Audit trail maintenance (6+ years)

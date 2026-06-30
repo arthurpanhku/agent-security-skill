@@ -7,7 +7,8 @@ description: >-
   designing an AI agent or MCP server configuration, threat-modeling an agentic
   system, assessing the "lethal trifecta" / prompt-injection exposure, applying
   Zero Trust tiers to agents, vetting a new MCP server/tool, or mapping agent
-  risks to compliance frameworks (HIPAA, PCI-DSS, SOX, FedRAMP, FISMA).
+  risks to governance/compliance frameworks (ISO/IEC 42001, HIPAA, PCI-DSS,
+  SOX, FedRAMP, FISMA).
 license: MIT
 metadata:
   project: "HKU master's-student self-research project — open to contributions"
@@ -30,7 +31,7 @@ fix — defend with architecture, not filters.** Limit what a compromised agent 
   untrusted content + external egress)
 - Vetting a new or changed MCP server / tool before approval
 - Choosing a Zero Trust tier and implementation phase
-- Mapping agent risks to compliance (HIPAA, PCI-DSS, SOX, FedRAMP, FISMA)
+- Mapping agent risks to governance/compliance (ISO/IEC 42001, HIPAA, PCI-DSS, SOX, FedRAMP, FISMA)
 
 ## How to use it
 

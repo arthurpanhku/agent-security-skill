@@ -88,6 +88,7 @@
 
 | 领域 | 框架 |
 | --- | --- |
+| AI 治理 / 管理体系 | ISO/IEC 42001:2023 |
 | 医疗 | HIPAA |
 | 支付 / 财务 | PCI-DSS、SOX |
 | 政府 | FedRAMP、FISMA |
